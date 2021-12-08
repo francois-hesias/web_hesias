@@ -7,7 +7,14 @@ use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: [
+        'post', 'get'
+    ],
+    itemOperations: [
+        'get', 'delete', 'put'
+    ],
+)]
 class Book
 {
     #[ORM\Id]
