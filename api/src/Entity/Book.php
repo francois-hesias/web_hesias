@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
         'get', 'delete', 'put'
     ],
 )]
+#[ApiFilter(SearchFilter::class, properties: ['titre' => 'ipartial'])]
 class Book
 {
     #[ORM\Id]
